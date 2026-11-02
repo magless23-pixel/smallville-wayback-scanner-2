@@ -1,0 +1,72 @@
+name: Check Smallville Wayback URLs 2
+
+on:
+  schedule:
+    # Every 8 hours at 00:37, 08:37 and 16:37 UTC; avoid the busiest top-of-hour period.
+    - cron: '37 */8 * * *'
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'URLs to check this run (positive integer; script must support it)'
+        required: true
+        default: '100'
+      delay:
+        description: 'Seconds between requests (minimum 15)'
+        required: true
+        default: '40'
+      retry_unverified:
+        description: 'Retry previously failed URLs (true or false)'
+        required: true
+        default: 'false'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: smallville-cdx-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check and checkpoint results
+        env:
+          SCAN_COUNT: ${{ github.event_name == 'schedule' && '100' || inputs.count || '100' }}
+          SCAN_DELAY: ${{ github.event_name == 'schedule' && '40' || inputs.delay || '40' }}
+          RETRY_UNVERIFIED: ${{ github.event_name == 'schedule' && 'false' || inputs.retry_unverified || 'false' }}
+        run: |
+          if [ "$RETRY_UNVERIFIED" = 'true' ]; then
+            python scan.py --count "$SCAN_COUNT" --delay "$SCAN_DELAY" --retry-unverified
+          else
+            python scan.py --count "$SCAN_COUNT" --delay "$SCAN_DELAY"
+          fi
+      - name: Commit progress into repository for next run
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -d reports ]; then
+            git add reports/
+            if ! git diff --cached --quiet; then
+              git commit -m 'Save Wayback scan progress'
+              git push
+            else
+              echo 'No changed scan results'
+            fi
+          else
+            echo 'No reports directory to commit'
+          fi
+      - name: Downloadable report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wayback-results-${{ github.run_number }}
+          path: reports/
+          if-no-files-found: warn
