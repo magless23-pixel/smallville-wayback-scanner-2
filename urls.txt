@@ -4,11 +4,4 @@ http://smallville.slashdom.com:80/archive/13/feeleverything.html
 http://smallville.slashdom.com:80/archive/13/theinvisible.html
 http://smallville.slashdom.com:80/archive/13/thelaugh.html
 http://smallville.slashdom.com:80/archive/14/toehold.html
-http://smallville.slashdom.com:80/archive/29/itsholiday.html
-https://web.archive.org/web/20040107123056/http://smallville.slashdom.com:80/archive/29/itsholiday.html
 http://smallville.slashdom.com:80/archive/32/fostering.html
-https://web.archive.org/web/20080801090228/http://smallville.slashdom.net:80/archive/32/fostering.html
-http://smallville.slashdom.com:80/archive/35/calculate.html
-https://web.archive.org/web/20040821221552/http://smallville.slashdom.com:80/archive/35/calculate.html
-http://smallville.slashdom.com:80/archive/35/therunaway.html
-https://web.archive.org/web/20040821221621/http://smallville.slashdom.com:80/archive/35/therunaway.html
