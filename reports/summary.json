@@ -1,12 +1,12 @@
 {
-  "total_urls": 10,
+  "total_urls": 14,
   "checked": 10,
   "remaining_unchecked": 0,
   "counts": {
     "NO_SAVES": 0,
     "NO_SECOND_CAPTURE": 0,
     "REMAINING": 10,
-    "UNVERIFIED": 0
+    "UNVERIFIED": 4
   },
   "note": "Second capture is the second distinct CDX timestamp in chronological order, not independently verified as a working page. Capture count counts CDX records. Failed requests remain UNVERIFIED."
 }
