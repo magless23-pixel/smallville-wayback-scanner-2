@@ -1,4 +1,0 @@
-ValueError: Unexpected CDX response; not interpreted as zero captures | https://web.archive.org/web/20040107123056/http://smallville.slashdom.com:80/archive/29/itsholiday.html
-ValueError: Unexpected CDX response; not interpreted as zero captures | https://web.archive.org/web/20080801090228/http://smallville.slashdom.net:80/archive/32/fostering.html
-URLError: <urlopen error _ssl.c:994: The handshake operation timed out> | https://web.archive.org/web/20040821221552/http://smallville.slashdom.com:80/archive/35/calculate.html
-URLError: <urlopen error [Errno 111] Connection refused> | https://web.archive.org/web/20040821221621/http://smallville.slashdom.com:80/archive/35/therunaway.html
