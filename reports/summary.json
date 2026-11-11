@@ -1,7 +1,7 @@
 {
   "total_urls": 7,
   "checked": 7,
-  "remaining_unchecked": -7,
+  "remaining_unchecked": 0,
   "counts": {
     "NO_SAVES": 0,
     "NO_SECOND_CAPTURE": 0,
